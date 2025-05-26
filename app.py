@@ -6,6 +6,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain_groq import ChatGroq
 from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 from loaders import *
 
@@ -14,14 +15,32 @@ TIPOS_ARQUIVOS_VALIDOS = [
     'Site', 'Youtube', 'Pdf', 'Csv', 'Txt'
 ]
 
-CONFIG_MODELOS = {'Groq': 
-                        {'modelos': 
-                            ['gemma2-9b-it', 'mixtral-8x7b-32768', 'meta-llama/Llama-Guard-4-12B', 'llama-3.3-70b-versatile', 'llama-3.1-8b-instant', 'llama3-70b-8192', 'llama3-8b-8192', 'whisper-large-v3', 'whisper-large-v3-turbo', 'distil-whisper-large-v3-en'],
-                         'chat': ChatGroq},
-                  'OpenAI': 
-                        {'modelos': 
-                            ['gpt-4o-mini', 'gpt-4o', 'o1-preview', 'o1-mini', 'gpt-3.5-turbo', 'gpt-4', 'gpt-4-turbo'],
-                         'chat': ChatOpenAI}}
+
+CONFIG_MODELOS = {
+    'Groq': {
+        'modelos': [
+            'gemma2-9b-it', 'mixtral-8x7b-32768', 'meta-llama/Llama-Guard-4-12B',
+            'llama-3.3-70b-versatile', 'llama-3.1-8b-instant', 'llama3-70b-8192',
+            'llama3-8b-8192', 'whisper-large-v3', 'whisper-large-v3-turbo',
+            'distil-whisper-large-v3-en'
+        ],
+        'chat': ChatGroq
+    },
+    'OpenAI': {
+        'modelos': [
+            'gpt-4o-mini', 'gpt-4o', 'o1-preview', 'o1-mini',
+            'gpt-3.5-turbo', 'gpt-4', 'gpt-4-turbo'
+        ],
+        'chat': ChatOpenAI
+    },
+    'Gemini': {
+        'modelos': [
+            'gemini-pro', 'gemini-1.5-pro', 'gemini-1.5-flash'
+        ],
+        'chat': ChatGoogleGenerativeAI
+    }
+}
+
 
 MEMORIA = ConversationBufferMemory()
 
