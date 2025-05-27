@@ -10,6 +10,8 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 
 from loaders import *
 
+import time
+
 
 TIPOS_ARQUIVOS_VALIDOS = [
     'Site', 'Youtube', 'Pdf', 'Csv', 'Txt'
