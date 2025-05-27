@@ -162,8 +162,12 @@ def sidebar():
             f'Adicione a api key para o provedor {provedor}',
             value=st.session_state.get(f'api_key_{provedor}'))
         st.session_state[f'api_key_{provedor}'] = api_key
+
+        message_placeholder = st.empty()
         if api_key:
-            st.success('Chave salva com sucesso')
+            message_placeholder.success('Chave salva com sucesso')
+            time.sleep(2)
+            message_placeholder.empty()
     
     if st.button('Inicializar Oráculo', use_container_width=True):
         carrega_modelo(provedor, modelo, api_key, tipo_arquivo, arquivo)
